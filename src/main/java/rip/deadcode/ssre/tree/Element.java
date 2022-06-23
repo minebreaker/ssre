@@ -7,13 +7,15 @@ import java.util.List;
 
 public interface Element {
 
-    public String compile( List<Element> rest );
+    public String compile( int i, List<Element> rest );
 
     public static interface Isolated extends Element {
-        public default String compile( List<Element> rest ) {
+        @Override public default String compile( int i, List<Element> elements ) {
+
             var result = this.compile();
-            var restCompiled = Builder.compile( rest );
-            return result + restCompiled;
+            var restResult = Builder.compile( i + 1, elements );
+
+            return result + restResult;
         }
 
         public String compile();

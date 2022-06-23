@@ -167,18 +167,22 @@ public final class Builder {
      * @return Compiled regular expression
      */
     public String regex() {
-        return compile( this.tree );
+        return compile( 0, this.tree );
     }
 
-    public static String compile( List<Element> elements ) {
+    public static String compile( int i, List<Element> elements ) {
 
-        if ( elements.isEmpty() ) {
+        if ( i < 0 ) {
+            throw new IndexOutOfBoundsException( i );
+        }
+
+        if ( i >= elements.size() ) {
             return "";
         }
 
-        var first = elements.get( 0 );
-        var rest = elements.subList( 1, elements.size() );
-        return first.compile( rest );
+        var next = elements.get( i );
+
+        return next.compile( i, elements );
     }
 
     /**
