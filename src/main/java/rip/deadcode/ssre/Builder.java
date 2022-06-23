@@ -1,6 +1,8 @@
 package rip.deadcode.ssre;
 
 import rip.deadcode.ssre.internal.Utils;
+import rip.deadcode.ssre.tree.Alphabet;
+import rip.deadcode.ssre.tree.Alphabets;
 import rip.deadcode.ssre.tree.Alphanumeric;
 import rip.deadcode.ssre.tree.Alphanumerics;
 import rip.deadcode.ssre.tree.AnyChar;
@@ -92,6 +94,20 @@ public final class Builder {
      */
     public Builder alphanumerics() {
         return add( Alphanumerics.getInstance() );
+    }
+
+    /**
+     * Compiled to <code>[a-zA-Z]</code>.
+     */
+    public Builder alphabet() {
+        return add( Alphabet.getInstance() );
+    }
+
+    /**
+     * Compiled to <code>[a-zA-Z]+</code>
+     */
+    public Builder alphabets() {
+        return add( Alphabets.getInstance() );
     }
 
     /**

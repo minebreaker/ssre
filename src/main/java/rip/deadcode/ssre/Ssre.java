@@ -26,6 +26,14 @@ public final class Ssre {
         return new Builder().alphanumerics();
     }
 
+    public static Builder alphabet() {
+        return new Builder().alphabet();
+    }
+
+    public static Builder alphabets() {
+        return new Builder().alphabets();
+    }
+
     public static Builder wordChar() {
         return new Builder().wordChar();
     }
