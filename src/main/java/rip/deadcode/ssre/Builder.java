@@ -1,6 +1,7 @@
 package rip.deadcode.ssre;
 
 import rip.deadcode.ssre.internal.Utils;
+import rip.deadcode.ssre.tree.AnyChar;
 import rip.deadcode.ssre.tree.Blank;
 import rip.deadcode.ssre.tree.Blanks;
 import rip.deadcode.ssre.tree.Digit;
@@ -41,6 +42,10 @@ public final class Builder {
 
     public Builder digits() {
         return add( Digits.getInstance() );
+    }
+
+    public Builder anyChar() {
+        return add( AnyChar.getInstance() );
     }
 
     public Builder whitespace() {

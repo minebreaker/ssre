@@ -14,6 +14,10 @@ public final class Ssre {
         return new Builder().digits();
     }
 
+    public static Builder anyChar() {
+        return new Builder().anyChar();
+    }
+
     public static Builder whitespace() {
         return new Builder().whitespace();
     }
