@@ -1,6 +1,8 @@
 package rip.deadcode.ssre;
 
 import rip.deadcode.ssre.internal.Utils;
+import rip.deadcode.ssre.tree.Alphanumeric;
+import rip.deadcode.ssre.tree.Alphanumerics;
 import rip.deadcode.ssre.tree.AnyChar;
 import rip.deadcode.ssre.tree.Blank;
 import rip.deadcode.ssre.tree.Blanks;
@@ -79,12 +81,26 @@ public final class Builder {
     }
 
     /**
+     * Compiled to <code>[a-zA-Z0-9]</code>.
+     */
+    public Builder alphanumeric() {
+        return add( Alphanumeric.getInstance() );
+    }
+
+    /**
+     * Compiled to <code>[a-zA-Z0-9]+</code>.
+     */
+    public Builder alphanumerics() {
+        return add( Alphanumerics.getInstance() );
+    }
+
+    /**
      * Matches to a word i.e. one or more alphanumerics and underscores.
      *
      * <p>Compiled to <code>\w+</code></p>
      */
     public Builder word() {
-        return add(Word.getInstance());
+        return add( Word.getInstance() );
     }
 
     /**

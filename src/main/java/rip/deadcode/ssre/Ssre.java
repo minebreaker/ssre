@@ -18,6 +18,14 @@ public final class Ssre {
         return new Builder().anyChar();
     }
 
+    public static Builder alphanumeric() {
+        return new Builder().alphanumeric();
+    }
+
+    public static Builder alphanumerics() {
+        return new Builder().alphanumerics();
+    }
+
     public static Builder wordChar() {
         return new Builder().wordChar();
     }
