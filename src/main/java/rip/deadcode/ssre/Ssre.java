@@ -18,6 +18,14 @@ public final class Ssre {
         return new Builder().anyChar();
     }
 
+    public static Builder wordChar() {
+        return new Builder().wordChar();
+    }
+
+    public static Builder word() {
+        return new Builder().word();
+    }
+
     public static Builder whitespace() {
         return new Builder().whitespace();
     }

@@ -10,7 +10,6 @@ import static com.google.common.truth.Truth.assertThat;
 
 public final class DigitTest {
 
-
     @Test
     void testCompile() {
         assertThat( Ssre.string( "n" ).digit().string( "n" ).regex() )

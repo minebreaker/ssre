@@ -11,6 +11,8 @@ import rip.deadcode.ssre.tree.Repeat;
 import rip.deadcode.ssre.tree.StringElement;
 import rip.deadcode.ssre.tree.Whitespace;
 import rip.deadcode.ssre.tree.Whitespaces;
+import rip.deadcode.ssre.tree.Word;
+import rip.deadcode.ssre.tree.WordChar;
 
 import java.util.List;
 import java.util.regex.Pattern;
@@ -65,6 +67,24 @@ public final class Builder {
      */
     public Builder anyChar() {
         return add( AnyChar.getInstance() );
+    }
+
+    /**
+     * Matches to a word character i.e. alphanumeric and underscore(<code>_</code>).
+     *
+     * <p>Compiled to <code>\w</code></p>
+     */
+    public Builder wordChar() {
+        return add( WordChar.getInstance() );
+    }
+
+    /**
+     * Matches to a word i.e. one or more alphanumerics and underscores.
+     *
+     * <p>Compiled to <code>\w+</code></p>
+     */
+    public Builder word() {
+        return add(Word.getInstance());
     }
 
     /**
