@@ -3,6 +3,8 @@ package rip.deadcode.ssre;
 import rip.deadcode.ssre.internal.Utils;
 import rip.deadcode.ssre.tree.Blank;
 import rip.deadcode.ssre.tree.Blanks;
+import rip.deadcode.ssre.tree.Digit;
+import rip.deadcode.ssre.tree.Digits;
 import rip.deadcode.ssre.tree.Element;
 import rip.deadcode.ssre.tree.Repeat;
 import rip.deadcode.ssre.tree.StringElement;
@@ -31,6 +33,14 @@ public final class Builder {
 
     public Builder string( String value ) {
         return add( new StringElement( value ) );
+    }
+
+    public Builder digit() {
+        return add( new Digit() );
+    }
+
+    public Builder digits() {
+        return add( new Digits() );
     }
 
     public Builder whitespace() {

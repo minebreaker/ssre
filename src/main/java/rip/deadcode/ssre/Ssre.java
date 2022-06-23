@@ -6,6 +6,14 @@ public final class Ssre {
         return new Builder().string( value );
     }
 
+    public static Builder digit() {
+        return new Builder().digit();
+    }
+
+    public static Builder digits() {
+        return new Builder().digits();
+    }
+
     public static Builder whitespace() {
         return new Builder().whitespace();
     }
@@ -24,5 +32,13 @@ public final class Ssre {
 
     public static Builder repeat( Builder builder ) {
         return new Builder().repeat( builder );
+    }
+
+    public Builder repeat( Builder builder, int count ) {
+        return new Builder().repeat( builder, count, count );
+    }
+
+    public Builder repeat( Builder builder, int min, int max ) {
+        return new Builder().repeat( builder, min, max );
     }
 }
