@@ -4,6 +4,8 @@ public final class Whitespaces implements Element.Isolated {
 
     private static final Whitespaces SINGLETON = new Whitespaces();
 
+    private Whitespaces() {}
+
     public static Whitespaces getInstance() {
         return SINGLETON;
     }

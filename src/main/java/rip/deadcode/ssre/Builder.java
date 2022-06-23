@@ -36,11 +36,11 @@ public final class Builder {
     }
 
     public Builder digit() {
-        return add( new Digit() );
+        return add( Digit.getInstance() );
     }
 
     public Builder digits() {
-        return add( new Digits() );
+        return add( Digits.getInstance() );
     }
 
     public Builder whitespace() {

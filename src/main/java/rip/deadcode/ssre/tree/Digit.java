@@ -4,6 +4,8 @@ public final class Digit implements Element.Isolated {
 
     private static final Digit SINGLETON = new Digit();
 
+    private Digit() {}
+
     public static Digit getInstance() {
         return SINGLETON;
     }
