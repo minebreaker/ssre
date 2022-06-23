@@ -32,34 +32,68 @@ public final class Builder {
         return new Builder( Utils.add( this.tree, e ) );
     }
 
+    /**
+     * Matches to exact given string.
+     * <code>.^$*+?()[{\|</code> will be escaped.
+     */
     public Builder string( String value ) {
         return add( new StringElement( value ) );
     }
 
+    /**
+     * Matches to any digit i.e. <code>0123456789</code>.
+     * Will not match to other Unicode number characters.
+     *
+     * <p>Compiled to <code>\d</code> (Note that Java digit character class is equivalent to <code>[0-9]</code>)
+     */
     public Builder digit() {
         return add( Digit.getInstance() );
     }
 
+    /**
+     * Matches to one or more {@link Builder#digit}s.
+     */
     public Builder digits() {
         return add( Digits.getInstance() );
     }
 
+    /**
+     * Matches to any character.
+     * Note that this will not match to line breaks when {@link Pattern#DOTALL} mode is disabled.
+     *
+     * <p>Compiled to <code>.</code>
+     */
     public Builder anyChar() {
         return add( AnyChar.getInstance() );
     }
 
+    /**
+     * Matches to whitespace <code>U+0020</code>.
+     */
     public Builder whitespace() {
         return add( Whitespace.getInstance() );
     }
 
+    /**
+     * Matches to one or more {@link Builder#whitespace()}s.
+     */
     public Builder whitespaces() {
         return add( Whitespaces.getInstance() );
     }
 
+    /**
+     * Matches to whitespace, tab, linebreak, and other whitespace characters.
+     *
+     * <p>Compiled to <code>\s</code>
+     */
     public Builder blank() {
         return add( Blank.getInstance() );
     }
 
+    /**
+     * Matches to one or more whitespace characters.
+     * Compiled to <code>\s+</code>
+     */
     public Builder blanks() {
         return add( Blanks.getInstance() );
     }
@@ -76,6 +110,10 @@ public final class Builder {
         return add( new Repeat( builder, min, max, false ) );
     }
 
+    /**
+     * Returns the compiled regular expression string.
+     * @return Compiled regular expression
+     */
     public String regex() {
         return compile( this.tree );
     }
@@ -91,6 +129,12 @@ public final class Builder {
         return first.compile( rest );
     }
 
+    /**
+     * Returns the compiled regular expression {@link Pattern}.
+     * This is a convenience method of <code>Pattern.compile(regex())</code>.
+     *
+     * @return Compiled {@link Pattern}
+     */
     public Pattern compile() {
         return Pattern.compile( regex() );
     }
