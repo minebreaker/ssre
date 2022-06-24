@@ -1,5 +1,9 @@
 package rip.deadcode.ssre;
 
+import rip.deadcode.ssre.tree.InputBegin;
+import rip.deadcode.ssre.tree.LineBegin;
+
+
 public final class Ssre {
 
     public static Builder string( String value ) {
@@ -59,11 +63,11 @@ public final class Ssre {
     }
 
     public static Builder lineBegin() {
-        return new Builder().lineBegin();
+        return new Builder().add( LineBegin.getInstance() );
     }
 
-    public static Builder lineEnd() {
-        return new Builder().lineEnd();
+    public static Builder inputBegin() {
+        return new Builder().add( InputBegin.getInstance() );
     }
 
     public static Builder repeat( Builder builder ) {

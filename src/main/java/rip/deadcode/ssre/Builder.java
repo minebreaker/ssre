@@ -11,7 +11,7 @@ import rip.deadcode.ssre.tree.Blanks;
 import rip.deadcode.ssre.tree.Digit;
 import rip.deadcode.ssre.tree.Digits;
 import rip.deadcode.ssre.tree.Element;
-import rip.deadcode.ssre.tree.LineBegin;
+import rip.deadcode.ssre.tree.InputEnd;
 import rip.deadcode.ssre.tree.LineEnd;
 import rip.deadcode.ssre.tree.Repeat;
 import rip.deadcode.ssre.tree.StringElement;
@@ -38,7 +38,7 @@ public final class Builder {
         this.tree = tree;
     }
 
-    private Builder add( Element e ) {
+    Builder add( Element e ) {
         return new Builder( Utils.add( this.tree, e ) );
     }
 
@@ -154,12 +154,16 @@ public final class Builder {
         return add( Blanks.getInstance() );
     }
 
-    public Builder lineBegin() {
-        return add( LineBegin.getInstance() );
-    }
-
     public Builder lineEnd() {
         return add( LineEnd.getInstance() );
+    }
+
+    public Builder inputEnd() {
+        return add( InputEnd.getInstance( false ) );
+    }
+
+    public Builder inputEndIgnoringLastLineBreak() {
+        return add( InputEnd.getInstance( true ) );
     }
 
     public Builder repeat( Builder builder ) {
