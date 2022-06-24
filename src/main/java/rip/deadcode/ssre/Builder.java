@@ -11,6 +11,8 @@ import rip.deadcode.ssre.tree.Blanks;
 import rip.deadcode.ssre.tree.Digit;
 import rip.deadcode.ssre.tree.Digits;
 import rip.deadcode.ssre.tree.Element;
+import rip.deadcode.ssre.tree.LineBegin;
+import rip.deadcode.ssre.tree.LineEnd;
 import rip.deadcode.ssre.tree.Repeat;
 import rip.deadcode.ssre.tree.StringElement;
 import rip.deadcode.ssre.tree.Whitespace;
@@ -18,8 +20,10 @@ import rip.deadcode.ssre.tree.Whitespaces;
 import rip.deadcode.ssre.tree.Word;
 import rip.deadcode.ssre.tree.WordChar;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 
 public final class Builder {
@@ -150,6 +154,14 @@ public final class Builder {
         return add( Blanks.getInstance() );
     }
 
+    public Builder lineBegin() {
+        return add( LineBegin.getInstance() );
+    }
+
+    public Builder lineEnd() {
+        return add( LineEnd.getInstance() );
+    }
+
     public Builder repeat( Builder builder ) {
         return add( new Repeat( builder, 1, -1, false ) );
     }
@@ -193,5 +205,18 @@ public final class Builder {
      */
     public Pattern compile() {
         return Pattern.compile( regex() );
+    }
+
+    public Pattern compile( Flag flag, Flag... rest ) {
+        //noinspection MagicConstant
+        return Pattern.compile(
+                regex(),
+                Stream.concat(
+                              Stream.of( flag ),
+                              Arrays.stream( rest )
+                      )
+                      .mapToInt( Flag::getFlag )
+                      .reduce( 0, ( x, y ) -> x | y )
+        );
     }
 }

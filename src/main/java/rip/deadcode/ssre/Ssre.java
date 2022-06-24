@@ -58,6 +58,14 @@ public final class Ssre {
         return new Builder().blanks();
     }
 
+    public static Builder lineBegin() {
+        return new Builder().lineBegin();
+    }
+
+    public static Builder lineEnd() {
+        return new Builder().lineEnd();
+    }
+
     public static Builder repeat( Builder builder ) {
         return new Builder().repeat( builder );
     }
